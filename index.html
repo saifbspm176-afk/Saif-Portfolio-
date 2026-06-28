@@ -1,1 +1,659 @@
-# webs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saif Ur Rehman — Project Manager & BI Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --border:    #21262d;
+    --teal:      #00d4aa;
+    --cyan:      #38bdf8;
+    --muted:     #8b949e;
+    --text:      #e6edf3;
+    --subtext:   #c9d1d9;
+    --accent-grd: linear-gradient(135deg, #00d4aa, #38bdf8);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,17,23,.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    background: var(--accent-grd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: .03em;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; top: -30%; right: -15%;
+    width: 60vw; height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,170,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: .78rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .hero-name span {
+    background: var(--accent-grd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    max-width: 560px;
+    color: var(--subtext);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px;
+    background: var(--accent-grd);
+    color: #0d1117;
+    font-weight: 700;
+    font-size: .88rem;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: opacity .2s, transform .2s;
+  }
+  .btn-primary:hover { opacity: .85; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px;
+    border: 1px solid var(--border);
+    color: var(--subtext);
+    font-weight: 500;
+    font-size: .88rem;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: border-color .2s, color .2s, transform .2s;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 36px; margin-top: 56px; flex-wrap: wrap;
+  }
+  .stat { border-left: 2px solid var(--teal); padding-left: 14px; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--accent-grd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label { font-size: .78rem; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 5%; }
+  .section-eyebrow {
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 48px;
+    line-height: 1.15;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .about-text p { color: var(--subtext); margin-bottom: 16px; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .tag {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: .78rem;
+    color: var(--muted);
+    background: var(--bg);
+  }
+  .cert-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .cert-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: .88rem;
+    color: var(--subtext);
+    transition: border-color .2s;
+  }
+  .cert-item:hover { border-color: var(--teal); }
+  .cert-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent-grd);
+    flex-shrink: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+  .timeline-item { position: relative; margin-bottom: 44px; }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -32px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(0,212,170,.2);
+  }
+  .exp-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .exp-company {
+    font-size: .82rem;
+    color: var(--teal);
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+  .exp-period {
+    font-size: .76rem;
+    color: var(--muted);
+    margin-left: auto;
+    letter-spacing: .05em;
+  }
+  .exp-bullets { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li {
+    color: var(--subtext);
+    font-size: .88rem;
+    padding-left: 18px;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-size: .8rem;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    transition: border-color .25s, transform .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent-grd);
+    opacity: 0;
+    transition: opacity .25s;
+  }
+  .project-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .project-desc { color: var(--subtext); font-size: .875rem; margin-bottom: 18px; }
+  .project-metrics { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .metric {
+    background: rgba(0,212,170,.08);
+    border: 1px solid rgba(0,212,170,.18);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: .76rem;
+    color: var(--teal);
+    font-weight: 600;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-tag {
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: .73rem;
+    color: var(--muted);
+    font-family: 'Inter', monospace;
+  }
+
+  /* ── SKILLS (dashboard-style signature element) ── */
+  .skills-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .skill-group-title {
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .skill-row { margin-bottom: 16px; }
+  .skill-label-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .skill-name { font-size: .85rem; color: var(--subtext); }
+  .skill-pct { font-size: .78rem; color: var(--teal); font-weight: 600; }
+  .skill-bar-track {
+    height: 5px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent-grd);
+    width: 0;
+    transition: width 1.2s cubic-bezier(.25,.8,.25,1);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .edu-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    max-width: 680px;
+  }
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .edu-institute { color: var(--teal); font-size: .9rem; font-weight: 600; margin-bottom: 4px; }
+  .edu-meta { color: var(--muted); font-size: .82rem; margin-bottom: 18px; }
+  .edu-courses {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .edu-course {
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: .76rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  #contact { text-align: center; }
+  .contact-email {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 700;
+    background: var(--accent-grd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    display: inline-block;
+    margin: 18px 0 32px;
+    transition: opacity .2s;
+  }
+  .contact-email:hover { opacity: .75; }
+  .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .contact-link {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .84rem;
+    transition: border-color .2s, color .2s;
+  }
+  .contact-link:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 28px 5%;
+    font-size: .78rem;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .exp-period { margin-left: 0; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Saif Ur Rehman</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Project Manager · BI Analyst · Supply Chain</p>
+  <h1 class="hero-name">Saif Ur<br /><span>Rehman</span></h1>
+  <p class="hero-sub">
+    BS Project Management graduate (CGPA 3.35/4.00 · IIUI) delivering data-driven decisions across supply chain operations, business intelligence, and full-stack NLP projects. Certified in Google PM, Agile, and Power BI.
+  </p>
+  <div class="hero-cta">
+    <a href="Saif_Ur_Rehman_CV__5_.pdf" download class="btn-primary">
+      ↓ Download CV
+    </a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">3.35</div>
+      <div class="stat-label">CGPA / 4.00</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">86.7%</div>
+      <div class="stat-label">NLP Query Accuracy</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4.5</div>
+      <div class="stat-label">UAT Score / 5.0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">SKUs Monitored</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow">Who I Am</p>
+  <h2 class="section-title">Bridging Projects,<br />Data & Delivery</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a final-year Project Management graduate from the International Islamic University Islamabad with a passion for turning complexity into clarity — whether that's streamlining a 500-SKU inventory system, building a RAG-powered policy portal, or crafting Power BI dashboards that actually help teams make decisions faster.</p>
+      <p>I thrive at the intersection of structured PM methodologies (PMBOK, Agile-Scrum) and real-world data tools. I like shipping things that work and measuring whether they do.</p>
+      <div class="about-tags">
+        <span class="tag">PMBOK Framework</span>
+        <span class="tag">Agile-Scrum</span>
+        <span class="tag">Waterfall</span>
+        <span class="tag">Hybrid Lifecycle</span>
+        <span class="tag">Risk Assessment</span>
+        <span class="tag">Supply Chain Ops</span>
+        <span class="tag">Budget Planning</span>
+        <span class="tag">Process Improvement</span>
+      </div>
+    </div>
+    <div>
+      <ul class="cert-list">
+        <li class="cert-item"><span class="cert-dot"></span>Google PM Foundations — Coursera (2023)</li>
+        <li class="cert-item"><span class="cert-dot"></span>Agile Project Management — HP LIFE Foundation (2025)</li>
+        <li class="cert-item"><span class="cert-dot"></span>Microsoft Power BI Certification — Alison (2026)</li>
+        <li class="cert-item"><span class="cert-dot"></span>SQL Stored Procedure — Uniathena (2026)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-eyebrow">Career</p>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="exp-header">
+        <span class="exp-role">Supply Chain Project Assistant Intern</span>
+        <span class="exp-company">Top Tier Traders 2020</span>
+        <span class="exp-period">Jun 2025 – Aug 2025 · Rawalpindi</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Monitored inventory databases covering 500+ SKUs, cutting stock discrepancy errors by ~20% through improved reconciliation.</li>
+        <li>Coordinated dispatch & delivery scheduling for 50+ daily orders, contributing to a 15% reduction in delivery bottlenecks.</li>
+        <li>Supported procurement and vendor coordination across sourcing, inbound/outbound logistics; prepared weekly KPI reports.</li>
+        <li>Collaborated across warehouse, accounts, and logistics teams to identify and implement process improvements.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="exp-header">
+        <span class="exp-role">Project Management Intern</span>
+        <span class="exp-company">The Kids Model High School</span>
+        <span class="exp-period">Jun 2024 – Sep 2024 · Sialkot</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Tracked financial expenditure across 3 concurrent institutional projects, supporting budget variance analysis and reporting.</li>
+        <li>Prepared 8+ structured documentation reports and MS Excel dashboards, improving project visibility for stakeholders.</li>
+        <li>Assisted in resource allocation planning ensuring on-time milestone delivery within allocated budgets.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="exp-header">
+        <span class="exp-role">Telemarketing Agent</span>
+        <span class="exp-company">EZLINK CO</span>
+        <span class="exp-period">Jan 2022 – Sep 2022 · Rawalpindi</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Conducted 30+ outbound client communications daily, consistently hitting monthly performance targets.</li>
+        <li>Managed customer data and interaction records in CRM systems, ensuring accuracy and timely follow-up.</li>
+        <li>Built negotiation and communication skills in a competitive, high-volume sales environment.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-eyebrow">Work</p>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">NLBI — Natural Language for Business Intelligence</h3>
+      <p class="project-desc">Final-year capstone: a full-stack web portal enabling natural language queries over the IIU Statutes & Policy Compendium 2020–23. Built a RAG pipeline with FAISS vector search, responsive UI with embedded PDF viewer, and an admin panel. Managed the 18-week lifecycle using PMBOK + Agile-Scrum.</p>
+      <div class="project-metrics">
+        <span class="metric">86.7% Query Accuracy</span>
+        <span class="metric">4.5 / 5.0 UAT</span>
+        <span class="metric">8 Stakeholders</span>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Python Flask</span>
+        <span class="stack-tag">NLP / RAG</span>
+        <span class="stack-tag">FAISS</span>
+        <span class="stack-tag">SQLite</span>
+        <span class="stack-tag">PDF.js</span>
+        <span class="stack-tag">Bootstrap 5</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3 class="project-title">Management Reporting Dashboard</h3>
+      <p class="project-desc">Developed interactive Power BI dashboards and a multi-sheet Excel financial forecasting template featuring KPI tracking, cost variance analysis, and resource utilisation reporting — enabling faster management decision-making.</p>
+      <div class="project-metrics">
+        <span class="metric">Power BI</span>
+        <span class="metric">Tableau</span>
+        <span class="metric">Advanced Excel</span>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Microsoft Power BI</span>
+        <span class="stack-tag">Tableau</span>
+        <span class="stack-tag">MS Excel</span>
+        <span class="stack-tag">Data Visualisation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-eyebrow">Toolkit</p>
+  <h2 class="section-title">Skills Dashboard</h2>
+  <div class="skills-dashboard" id="skillsDash">
+    <div class="skill-group">
+      <div class="skill-group-title">PM Tools</div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">MS Project</span><span class="skill-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Jira</span><span class="skill-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">WBS & Scheduling</span><span class="skill-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Earned Value Analysis</span><span class="skill-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data & BI</div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Microsoft Power BI</span><span class="skill-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Tableau</span><span class="skill-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Advanced Excel</span><span class="skill-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">SQL</span><span class="skill-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Methodologies</div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">PMBOK Framework</span><span class="skill-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Agile-Scrum</span><span class="skill-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Waterfall</span><span class="skill-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div></div>
+      <div class="skill-row"><div class="skill-label-row"><span class="skill-name">Hybrid Lifecycle</span><span class="skill-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-eyebrow">Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-card">
+    <h3 class="edu-degree">BS Project Management</h3>
+    <p class="edu-institute">International Islamic University Islamabad (IIUI)</p>
+    <p class="edu-meta">Sep 2022 – Jun 2026 &nbsp;·&nbsp; CGPA: 3.35 / 4.00</p>
+    <div class="edu-courses">
+      <span class="edu-course">Project Risk Mgmt</span>
+      <span class="edu-course">Cost Mgmt</span>
+      <span class="edu-course">Quality Mgmt</span>
+      <span class="edu-course">Operations Mgmt</span>
+      <span class="edu-course">Research Methodology</span>
+      <span class="edu-course">Quantitative Techniques</span>
+      <span class="edu-course">Strategic Mgmt</span>
+      <span class="edu-course">Design Thinking</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow">Let's Talk</p>
+  <h2 class="section-title">Open to Opportunities</h2>
+  <p style="color:var(--muted); max-width:480px; margin: 0 auto;">Looking for a graduate role in project management, business intelligence, or supply chain operations. Drop me a line.</p>
+  <a href="mailto:Rehmannyy143@gmail.com" class="contact-email">Rehmannyy143@gmail.com</a>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/saif-ur-rehman" target="_blank" class="contact-link">↗ LinkedIn</a>
+    <a href="tel:+923417229776" class="contact-link">📞 +92-341-7229776</a>
+    <a href="Saif_Ur_Rehman_CV__5_.pdf" download class="contact-link">↓ Download CV</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Saif Ur Rehman · Rawalpindi, Pakistan · Built with intent.</p>
+</footer>
+
+<script>
+  // Animate skill bars when section scrolls into view
+  const fills = document.querySelectorAll('.skill-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fills.forEach(el => {
+          el.style.width = el.dataset.w + '%';
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(document.getElementById('skillsDash'));
+</script>
+</body>
+</html>
